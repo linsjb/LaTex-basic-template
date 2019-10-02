@@ -1,0 +1,11 @@
+*.aux
+*.bcf
+*.fdb_latexmk
+*.fls
+*.log
+*.run.xml
+*.synctex.gz
+*.pdf
+*.bbl
+*.blg
+__latexindent_temp.tex
