@@ -1,0 +1,58 @@
+% Custom commands for cleaner and easier implementation in the documents.
+% Package "cleveref" is needed for the "fullref" commands.
+% Package "csvsimple" is used to generate tabled from .csv-files with the csvTable command
+
+\newcommand{\fig}[5]{%
+    \figure[#1]
+        \centering
+        \includegraphics[width=#4\textwidth]{#5}
+        \caption{#2}\label{fig:#3}
+    \endfigure
+}
+
+\newcommand{\framedFig}[5]{%
+    \begin{figure}[#1]
+        \centering
+        \framebox{\includegraphics[width=#4\textwidth]{#5}}
+        \caption{#2}\label{fig:#3}
+    \end{figure}
+}
+
+\newcommand{\code}[5]{%
+    \begin{listing}[#1]
+        \caption{#2}
+        \label{code:#3}
+        \inputminted[frame=lines]{#4}{\codePath #5}
+    \end{listing}
+}
+
+\newcommand{\tikzFig}[4]{%
+    \figure[#1]
+        \centering
+        \resizebox{1\textwidth}{!}{%
+            \input{\tikzPath #4}
+        }%
+        \caption{#2}\label{fig:#3}
+    \endfigure
+}
+
+\newcommand{\texTable}[4]{%
+    \table[#1]
+        \centering
+        \caption{#2}\label{tab:#3}
+        \input{\tablePath #4}
+    \endtable
+}
+
+\newcommand{\csvTable}[4]{%
+    \table[#1]
+        \centering
+        \caption{#2} \label{tab:#3}
+        \csvautotabular{\tablePath #4}
+    \endtable
+}
+
+\newcommand*{\fullref}[1]{\textit{\cref{#1} \nameref{#1}}}
+\newcommand*{\Fullref}[1]{\textit{\Cref{#1} \nameref{#1}}}
+
+\newcommand{\numItems}[1]{\getrefnumber{#1}}
